@@ -16,7 +16,10 @@ pruneAndCheck = finish . pruneGrids where
   finish :: Acc (Array DIM3 Cell) -> Acc (Array DIM3 Cell, Array DIM1 Bool)
   finish xs = lift (xs, zipWith3 (\x y z -> x&&y&&z) (check1 xs) (check2 xs) (check3 xs))
   check1, check2 :: Acc (Array DIM3 Cell) -> Acc (Array DIM1 Bool)
-  check1 = fold1 (&&) . fold1 (&&) . map (/=0)
+  check1 xs =
+    let sz ::. h ::. w = shape xs
+        xs'            = reshape (sz ::. h*w) xs
+     in fold1 (&&) $ map (/=0) xs'
   check2 = fold1 (&&) . map (\x -> 511 == x.&.511) . fold1 (.|.)
   check3 = check2 . transposeOn _1 _2
 
