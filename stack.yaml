@@ -1,24 +1,23 @@
-allow-newer: true
-resolver: lts-11.22
+resolver: lts-14.27
 
 packages:
 - .
+
+extra-deps:
+- github: tmcdonell/accelerate
+  commit: da18b951f85c969971929199e0b03114ff210b6c
+
+- github: tmcdonell/accelerate-llvm
+  commit: 69a16bafdce0ab2b2ab4428e1f4a94e642eb3a68
+  subdirs:
+    - accelerate-llvm
+    - accelerate-llvm-native
+    - accelerate-llvm-ptx
+
+- github: tmcdonell/lens-accelerate
+  commit: b74eb8098735b1ad6cff3c5655af03d3f29b9f8e
 
 flags:
   accelerate:
     debug: true
 
-extra-deps:
-- half-0.3
-- cuda-0.10.1.0
-- nvvm-0.9.0.0
-- github: AccelerateHS/accelerate
-  commit: "d4d19bf" #commit: "a7b6853"
-- github: AccelerateHS/accelerate-llvm
-  commit: "d7af0a2"
-  subdirs: 
-  - accelerate-llvm
-  - accelerate-llvm-native
-  - accelerate-llvm-ptx
-- github: tmcdonell/lens-accelerate
-  commit: "b74eb80"
