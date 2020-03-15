@@ -1,18 +1,19 @@
+
 module Main where
-import           Control.Monad
-import           Data.Word
-import           Data.Bits
-import           Data.Maybe
-import           Data.List
-import           Utils
-import           AccPrune
-import qualified Data.Array.Accelerate         as A
-import qualified Data.Array.Accelerate.LLVM.Native
-                                               as Native
-import qualified Data.Array.Accelerate.Interpreter
-                                               as Interpreter
-import qualified Data.Array.Accelerate.LLVM.PTX
-                                               as PTX
+
+import Utils
+import Prune
+
+import Control.Monad
+import Data.Bits
+import Data.List
+import Data.Maybe
+import Data.Word
+
+import qualified Data.Array.Accelerate             as A
+import qualified Data.Array.Accelerate.LLVM.Native as CPU
+import qualified Data.Array.Accelerate.Interpreter as Interpreter
+-- import qualified Data.Array.Accelerate.LLVM.PTX    as PTX
 
 main =
   interact

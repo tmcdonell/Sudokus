@@ -4,7 +4,7 @@
 {-# LANGUAGE TypeOperators       #-}
 {-# LANGUAGE ViewPatterns        #-}
 
-module AccPrune where
+module Prune where
 
 import Data.Word
 import qualified Prelude                        as P
